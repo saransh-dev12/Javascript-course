@@ -26,6 +26,13 @@ console.log(newDate.getMonth());
 console.log(newDate.getDay());
 console.log(newDate.getFullYear());
 
+//`${newDate.getDay()}`
+
+newDate.toLocaleString("default", {
+    weekday: "long",
+});
+
+
 
 
 
