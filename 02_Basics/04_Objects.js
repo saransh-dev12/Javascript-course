@@ -53,15 +53,37 @@ const users = [
 
 users[1].email
 
-console.log(tinderUser);
+// console.log(tinderUser);
 
-console.log(Object.keys(tinderUser));
-console.log(Object.values(tinderUser));
-console.log(Object.entries(tinderUser)); // key value becomes an array
-
-
-console.log(tinderUser.hasOwnProperty('isLoggedIn'));
+// console.log(Object.keys(tinderUser));
+// console.log(Object.values(tinderUser));
+// console.log(Object.entries(tinderUser)); // key value becomes an array
 
 
+//console.log(tinderUser.hasOwnProperty('isLoggedIn'));
+
+
+// Destructuring of an object
+const course = {
+    coursename: "JsInHindi",
+    price: "999",
+    courseInstructor: "Saransh",
+
+
+}
+
+//course.courseInstructor
+const {courseInstructor: Instructor} = course
+
+console.log(Instructor);
+
+// Concept Of APIs
+
+// {
+//     "name": "SARANSH",
+//     "coursename": "ReactInHindi",
+//     "Price": "free",
+
+// }
 
 
