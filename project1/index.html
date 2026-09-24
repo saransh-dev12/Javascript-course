@@ -1,41 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="description" content="A small study in color, feeling, and the spaces between." />
+    <title>COLOR/ — a color playground</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../styles.css" />
-    <title>JavaScript Background Color Switcher</title>
+    <script src="projectOne.js" defer></script>
   </head>
   <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-    </nav>
-    <div class="canvas">
-      <!-- <a
-        style="
-          background-color: #fff;
-          padding: 10px 30px;
-          border-radius: 8px;
-          color: #212121;
-          text-decoration: none;
-          border: 2px solid #212121;
-        "
-        href="../index.html"
-        >Back to Home Page</a
-      > -->
-      <h1>Color Scheme Switcher</h1>
-      <span class="button" id="grey"></span>
-      <span class="button" id="white"></span>
-      <span class="button" id="blue"></span>
-      <span class="button" id="yellow"></span>
-      <span class="button" id="purple"></span>
-      <h2>
-        Try clicking on one of the colors above
-        <span>to change the background color of this page!</span>
-      </h2>
-    </div>
-    <script src="projectOne.js"></script>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Color Playground home">COLOR<span>/</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#playground">Playground</a><a href="#about">About</a>
+      </nav>
+      <div class="header-tools">
+        <button class="text-control" id="themeToggle" type="button" aria-label="Toggle light and dark theme"><span class="theme-icon">◐</span><span class="theme-label">LIGHT</span></button>
+        <button class="text-control" id="soundToggle" type="button" aria-pressed="false"><span class="sound-mark">♪</span><span id="soundLabel">SOUND OFF</span></button>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+    </header>
+
+    <main id="top">
+      <section class="hero section-pad" aria-labelledby="hero-title">
+        <div class="hero-meta reveal"><span>AN INTERACTIVE COLOR STUDY</span><span>NO. 001 — 2025</span></div>
+        <div class="hero-copy">
+          <p class="eyebrow reveal">A LITTLE SPACE TO FEEL</p>
+          <h1 id="hero-title" class="hero-title"><span class="title-line reveal">CHANGE</span><span class="title-line title-second reveal">THE <i>MOOD.</i></span></h1>
+          <div class="hero-bottom reveal"><p>Color changes everything.<br />Find the one that feels like <em>you.</em></p><a class="round-cta magnetic" href="#playground"><span>EXPLORE<br />COLORS</span><span class="arrow">↘</span></a></div>
+        </div>
+        <div class="hero-side-note" aria-hidden="true">A STUDY IN<br />CHROMA & FEELING</div>
+        <div class="hero-foot"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span><span>01 / 03</span></div>
+      </section>
+
+      <section class="playground section-pad" id="playground" aria-labelledby="playground-title">
+        <div class="section-heading reveal"><div><p class="eyebrow">01 — PLAYGROUND</p><h2 id="playground-title">Pick a <i>feeling.</i></h2></div><p class="section-note">Tap a shade to shift the whole scene.<br />There’s no wrong answer.</p></div>
+        <div class="color-stage" id="colorStage">
+          <div class="stage-top"><span class="eyebrow">CURRENT COLOR</span><span class="live-dot"></span><span class="live-label">LIVE ENVIRONMENT</span></div>
+          <div class="stage-orb" aria-hidden="true"><div class="orb-inner"></div><span class="orb-cross">+</span></div>
+          <div class="stage-content" id="stageContent">
+            <span class="stage-index">COLOR 01</span>
+            <h3 id="colorName">OBSIDIAN</h3>
+            <div class="color-values"><span id="hexValue">#171717</span><span id="rgbValue">RGB(23, 23, 23)</span></div>
+            <div class="copy-actions"><button class="copy-button" id="copyHex" type="button">COPY HEX <span>↗</span></button><button class="copy-button" id="copyRgb" type="button">COPY RGB <span>↗</span></button></div>
+          </div>
+          <span class="stage-coordinates" aria-hidden="true">HUE <b id="hueValue">0°</b><br />SAT <b id="satValue">0%</b></span>
+        </div>
+        <div class="palette-header reveal"><span class="eyebrow">THE PALETTE <span id="paletteCount">08 SHADES</span></span><span class="palette-hint">SELECT A COLOR <span>↓</span></span></div>
+        <div class="palette-grid" id="paletteGrid" aria-label="Color palette"></div>
+        <div class="playground-bottom reveal"><div class="history-block"><span class="eyebrow">RECENTLY VISITED</span><div class="history-list" id="historyList" aria-label="Color history"><span class="history-empty">Your colors will live here.</span></div></div><button class="random-button magnetic" id="randomButton" type="button"><span class="random-icon">✳</span> GENERATE RANDOM <span class="button-arrow">↗</span></button></div>
+      </section>
+
+      <section class="about section-pad" id="about" aria-labelledby="about-title">
+        <div class="about-intro reveal"><p class="eyebrow">02 — THE LANGUAGE OF COLOR</p><h2 id="about-title">WHY COLOR<br /><i>MATTERS.</i></h2><p class="about-lede">A shade is never just a shade. It has weight, temperature, and a way of making a room feel like somewhere else.</p></div>
+        <div class="principles">
+          <article class="principle reveal" tabindex="0"><span class="principle-number">01</span><div><h3>HUE</h3><p>The color’s pure identity. Its place on the spectrum gives it a voice before anything else does.</p><span class="principle-extra">RED FEELS CLOSE. BLUE FEELS FAR.</span></div><span class="principle-mark">↗</span></article>
+          <article class="principle reveal" tabindex="0"><span class="principle-number">02</span><div><h3>SATURATION</h3><p>How vivid a color feels. Turn it up for energy, or soften it into something quieter.</p><span class="principle-extra">LOUDNESS, MEASURED IN COLOR.</span></div><span class="principle-mark">↗</span></article>
+          <article class="principle reveal" tabindex="0"><span class="principle-number">03</span><div><h3>BRIGHTNESS</h3><p>The light inside a color. Small shifts can take a shade from grounded to weightless.</p><span class="principle-extra">LIGHT CHANGES EVERYTHING.</span></div><span class="principle-mark">↗</span></article>
+          <article class="principle reveal" tabindex="0"><span class="principle-number">04</span><div><h3>CONTRAST</h3><p>Where colors meet, attention follows. Contrast makes the important things easier to find.</p><span class="principle-extra">CLARITY IS A KIND OF CARE.</span></div><span class="principle-mark">↗</span></article>
+        </div>
+      </section>
+
+      <section class="final-cta section-pad reveal"><p class="eyebrow">03 — YOUR TURN</p><h2>FIND YOUR<br /><i>COLOR.</i></h2><a href="#playground" class="final-button magnetic">START PLAYING <span>↗</span></a><span class="final-scribble" aria-hidden="true">✳</span></section>
+    </main>
+    <footer class="site-footer"><a class="wordmark" href="#top">COLOR<span>/</span></a><span>INTERACTIVE COLOR PLAYGROUND</span><span>BUILT WITH HTML / CSS / JAVASCRIPT</span><a class="back-top" href="#top">BACK TO TOP ↑</a></footer>
+    <div class="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
