@@ -1,40 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="../styles.css" />
-    <title>Your Local Time</title>
-    <style>
-      body {
-        background-color: #212121;
-        color: #fff;
-      }
-      .center {
-        display: flex;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-      #clock {
-        font-size: 40px;
-        background-color: orange;
-        padding: 20px 50px;
-        margin-top: 10px;
-        border-radius: 10px;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d0f" />
+    <meta name="description" content="A precise, quiet instrument for local time." />
+    <link rel="icon" href="data:," />
+    <title>LOCAL TIME — a time instrument</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="projectThree.js" defer></script>
   </head>
   <body>
-    <nav>
+    <div class="ambient-glow" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Local Time home"><span class="brand-mark"></span> Local time</a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Enable tick sound">
+        <span id="soundLabel">SOUND · OFF</span>
+      </button>
+    </header>
 
-    </nav>
-    <div class="center">
-      <div id="banner"><span>Your local time</span></div>
-      <div id="clock"></div>
-    </div>
-    <script src="projectThree.js"></script>
+    <main id="top">
+      <section class="clock-face" aria-label="Your local time">
+        <div class="face-top"><span class="eyebrow">Local time <span class="live-status"><i></i>Live</span></span><span class="face-index">LT — <span id="timezoneAbbr">UTC +00:00</span></span></div>
+        <div class="time-wrap" aria-live="off">
+          <time id="clock" class="clock" aria-label="Local time"><span class="time-part" id="clockHour">00</span><span class="time-separator">:</span><span class="time-part" id="clockMinute">00</span><span class="time-separator">:</span><span class="time-part" id="clockSecond">00</span></time>
+        </div>
+        <div class="date-row">
+          <span class="weekday" id="weekday">—</span>
+          <time class="full-date" id="fullDate">—</time>
+        </div>
+        <span class="date-baseline" aria-hidden="true"></span>
+        <div class="face-bottom">
+          <div class="timezone-wrap" title="Detected from your device settings">
+            <span class="eyebrow">YOUR TIMEZONE</span>
+            <span class="timezone-name" id="timezoneName">Detecting timezone…</span>
+          </div>
+          <span class="utc-offset" id="utcOffset">UTC +00:00</span>
+        </div>
+        <div class="dial" aria-hidden="true"><span class="dial-label dial-zero">00</span><span class="dial-label dial-six">06</span><span class="dial-label dial-twelve">12</span><span class="dial-label dial-eighteen">18</span><span class="hour-marker" id="hourMarker"></span></div>
+      </section>
+
+      <section class="data-strip" aria-label="Additional time information">
+        <div class="data-point"><span class="eyebrow">Day of year</span><span class="data-value"><span id="dayOfYear">—</span><span class="data-unit"> / <span id="daysThisYear">365</span></span></span></div>
+        <div class="data-point"><span class="eyebrow">ISO week</span><span class="data-value" id="weekNumber">—</span></div>
+      </section>
+
+      <section class="world-section">
+        <details class="world-clock" id="worldClock">
+          <summary tabindex="0"><span class="world-title"><span class="summary-mark" aria-hidden="true">+</span> World time</span><span class="world-summary">4 CITIES <span class="summary-arrow" aria-hidden="true">↗</span></span></summary>
+          <div class="world-list" id="worldList" aria-label="Current time in selected cities"></div>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer"><span>DEVICE CLOCK</span><span>TIMEZONE AUTOMATICALLY DETECTED</span></footer>
   </body>
 </html>
