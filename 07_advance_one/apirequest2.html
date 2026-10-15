@@ -1,0 +1,38 @@
+xx<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #b8b0b0 ;">
+   
+        const user = {
+        name: "Saransh Pandey",
+        Image: "https://avatars.githubusercontent.com/u/265146715?v=4",       
+        followers: "24" 
+
+    }
+    
+
+   
+
+</body>
+    <script>
+        const requestUrl = 'https://api.github.com/users/saransh-dev12'
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', requestUrl)
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState);
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText)
+                console.log(data)
+                console.log(data.followers)
+                
+            }
+
+        }
+        xhr.send()
+
+    </script>
+</html> 

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Card</title>
+
+    <style>
+        body {
+            background-color: #b8b0b0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: white;
+            width: 280px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <img id="avatar" src="" alt="GitHub Avatar">
+        <h2 id="name">Loading...</h2>
+        <p>Followers: <span id="followers">0</span></p>
+    </div>
+
+    <script>
+        const requestUrl = 'https://api.github.com/users/saransh-dev12';
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', requestUrl);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+
+                const data = JSON.parse(xhr.responseText);
+
+                document.querySelector('#name').textContent = data.name || data.login;
+
+                document.querySelector('#avatar').src = data.avatar_url;
+
+                document.querySelector('#followers').textContent = data.followers;
+            }
+        };
+
+        xhr.send();
+    </script>
+
+</body>
+</html>
