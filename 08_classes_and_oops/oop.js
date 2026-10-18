@@ -19,12 +19,20 @@ function User(username, loginCount, isLoggedIn){
     this.loginCount = loginCount;
     this.isLoggedIn = isLoggedIn;
 
-    return this
+    this.greeting = function(){
+        console.log(`Welcome ${this.username}`)
+    }
+
+    // return this
 }
 
-const userOne = User("SARANSH", 12, true)
-const userTwo = User("Something", 11, false)
-console.log(userOne.username);
+const userOne = new User("SARANSH", 12, true)
+const userTwo = new User("Something", 11, false)
+console.log(userOne.constructor);
+//console.log(userTwo);
+
+
+
 
 // this overrides the values of userOne
 
